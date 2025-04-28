@@ -2,8 +2,6 @@ p 'knight file loaded'
 
 def knight_moves(current_step, target, path = [])
   return path if current_step == target
-  short_step = [1,2]
-  long_step = [2,1]
   path << current_step
 
   #incrementing toward target
