@@ -6,61 +6,101 @@ def knight_moves(current_step, target, path = [])
   if x_axis_difference == 0 && y_axis_difference == 0 # we've arrived to the target
     return path
   else
-    path << current_step
-    if x_axis_difference > 0 #x axis is positive
+    path << [current_step[0],current_step[1]]
+    p path
+    if x_axis_difference > 0
       if y_axis_difference > 0
-        # handle y increment. resolve operations here
+        # handle x & y increment.
+        if x_axis_difference >= 2
+          knight_moves(move_2_oclock(current_step), target, path)
+        else
+          knight_moves(move_1_oclock(current_step), target, path)
+        end
       elsif y_axis_difference < 0
-        # handle y decrement. resolve operations here
+        # handle x increment & y decrement.
+        if x_axis_difference >= 2
+          knight_moves(move_4_oclock(current_step), target, path)
+        else
+          knight_moves(move_5_oclock(current_step), target, path)
+        end
       else
-        # y is zero
+        # handle y is zero
+        if x_axis_difference >= 2
+          knight_moves(move_5_oclock(current_step), target, path)
+        else
+          knight_moves(move_4_oclock(current_step), target, path)
+        end
       end
-    elsif x_axis_difference < 0 # x axis is negative
+      #--------------------------------------------------------------------------
+    elsif x_axis_difference < 0 
       if y_axis_difference > 0
-        # handle y increment. resolve operations here
+        # handle x decrement & y increment.
+        if x_axis_difference <= -2
+          knight_moves(move_10_oclock(current_step), target, path)
+        else
+          knight_moves(move_11_oclock(current_step), target, path)
+        end
       elsif y_axis_difference < 0
-        # handle y decrement. resolve operations here
+        # handle x & y decrement.
+        if x_axis_difference <= -2
+          knight_moves(move_8_oclock(current_step), target, path)
+        else
+          knight_moves(move_7_oclock(current_step), target, path)
+        end
       else
         #y is zero
+        if x_axis_difference <= -2
+          knight_moves(move_7_oclock(current_step), target, path)
+        else
+          knight_moves(move_8_oclock(current_step), target, path)
+        end
       end
-    else #x axis is zero
+      #--------------------------------------------------------------------------
+    else #x is zero
       if y_axis_difference > 0
-        # handle y increment. resolve operations here
-      elsif y_axis_difference < 0
-        # handle y decrement. resolve operations here
-      else
-        #y is zero
+        # handle y increment. 
+        if y_axis_difference >= 2
+          knight_moves(move_11_oclock(current_step), target, path)
+        else
+          knight_moves(move_10_oclock(current_step), target, path)
+        end
+      else #y_axis_difference is negative
+        # handle y decrement. 
+        if y_axis_difference >= 2
+          knight_moves(move_5_oclock(current_step), target, path)
+        else
+          knight_moves(move_4_oclock(current_step), target, path)
+        end
       end
     end
   end
-  path
 end
 
-def move_one_oclock(arr)
+def move_1_oclock(arr)
   arr[0] += 1
   arr[1] += 2
   arr
 end
 
-def move_two_oclock(arr)
+def move_2_oclock(arr)
   arr[0] += 2
   arr[1] += 1
   arr
 end
 
-def move_four_oclock(arr)
+def move_4_oclock(arr)
   arr[0] += 2
   arr[1] -= 1
   arr
 end
 
-def move_five_oclock(arr)
+def move_5_oclock(arr)
   arr[0] += 1
   arr[1] -= 2
   arr
 end
 
-def move_seven_oclock(arr)
+def move_7_oclock(arr)
   arr[0] -= 1
   arr[1] -= 2
   arr
