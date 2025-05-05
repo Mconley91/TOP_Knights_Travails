@@ -7,27 +7,31 @@ def knight_moves(current_step, target, path = [])
     return path
   else
     path << current_step
-    #  knight_moves(, target, path)
-
-    if x_axis_difference > 0
-      # handle x incremenet
-      if y_axis_difference > 0
-        # handle y incremen. resolve operations here
-      else
-        # handle y decrement. resolve operations here
-      end
-    else # x ----------------------------------------axis is negative
-      #handle x decrement
+    if x_axis_difference > 0 #x axis is positive
       if y_axis_difference > 0
         # handle y increment. resolve operations here
-      else
+      elsif y_axis_difference < 0
         # handle y decrement. resolve operations here
+      else
+        # y is zero
       end
-
-      # note: current pseudocode does not account for x axis being 0 and y having value!
+    elsif x_axis_difference < 0 # x axis is negative
+      if y_axis_difference > 0
+        # handle y increment. resolve operations here
+      elsif y_axis_difference < 0
+        # handle y decrement. resolve operations here
+      else
+        #y is zero
+      end
+    else #x axis is zero
+      if y_axis_difference > 0
+        # handle y increment. resolve operations here
+      elsif y_axis_difference < 0
+        # handle y decrement. resolve operations here
+      else
+        #y is zero
+      end
     end
-
-
   end
   path
 end
