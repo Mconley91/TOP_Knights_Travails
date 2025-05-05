@@ -1,13 +1,14 @@
 p 'knight file loaded'
 
 def knight_moves(current_step, target, path = [])
+  p path
   x_axis_difference = target[0] - current_step[0]
   y_axis_difference = target[1] - current_step[1]
   if x_axis_difference == 0 && y_axis_difference == 0 # we've arrived to the target
+    path << [current_step[0],current_step[1]]
     return path
   else
     path << [current_step[0],current_step[1]]
-    p path
     if x_axis_difference > 0
       if y_axis_difference > 0
         # handle x & y increment.
@@ -25,10 +26,11 @@ def knight_moves(current_step, target, path = [])
         end
       else
         # handle y is zero
+        # p "#{current_step}'s Y is zero"
         if x_axis_difference >= 2
           knight_moves(move_5_oclock(current_step), target, path)
         else
-          knight_moves(move_4_oclock(current_step), target, path)
+          knight_moves(move_7_oclock(current_step), target, path)
         end
       end
       #--------------------------------------------------------------------------
@@ -126,5 +128,5 @@ end
 
 
 
-# p knight_moves([7,7],[0,0])
-p knight_moves([0,0],[7,7])
+p knight_moves([7,7],[0,0])
+# p knight_moves([0,0],[7,7])
