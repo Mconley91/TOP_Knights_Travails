@@ -9,12 +9,14 @@ def knight_moves(current_step, target, path = [])
   else
     path << [current_step[0],current_step[1]]
     p path
+    
     if x_axis_difference == 2 && y_axis_difference == 1
       knight_moves(move_2_oclock(current_step), target, path)
     end
     if x_axis_difference == 1 && y_axis_difference == 2
       knight_moves(move_1_oclock(current_step), target, path)
     end
+
     if x_axis_difference > 0
       if y_axis_difference > 0
         # handle x & y increment.
