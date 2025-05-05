@@ -3,17 +3,18 @@ p 'knight file loaded'
 def knight_moves(current_step, target, path = [])
   x_axis_difference = target[0] - current_step[0]
   y_axis_difference = target[1] - current_step[1]
+  x_axis_value = current_step[0]
+  y_axis_value = current_step[1]
   if x_axis_difference == 0 && y_axis_difference == 0 # we've arrived to the target
-    path << [current_step[0],current_step[1]]
+    path << [x_axis_value,y_axis_value]
     return path
   else
-    path << [current_step[0],current_step[1]]
+    path << [x_axis_value,y_axis_value]
     p path
     
     if x_axis_difference == 2 && y_axis_difference == 1
       knight_moves(move_2_oclock(current_step), target, path)
-    end
-    if x_axis_difference == 1 && y_axis_difference == 2
+    elsif x_axis_difference == 1 && y_axis_difference == 2
       knight_moves(move_1_oclock(current_step), target, path)
     end
 
