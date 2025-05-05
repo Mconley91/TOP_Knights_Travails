@@ -11,11 +11,23 @@ def knight_moves(current_step, target, path = [])
   else
     path << [x_axis_value,y_axis_value]
     p path
-    
+    #finishing moves
     if x_axis_difference == 2 && y_axis_difference == 1
       knight_moves(move_2_oclock(current_step), target, path)
+    elsif x_axis_difference == 2 && y_axis_difference == -1
+      knight_moves(move_4_oclock(current_step), target, path)
+    elsif x_axis_difference == -2 && y_axis_difference == 1
+      knight_moves(move_10_oclock(current_step), target, path)
+    elsif x_axis_difference == -2 && y_axis_difference == -1
+      knight_moves(move_8_oclock(current_step), target, path)
     elsif x_axis_difference == 1 && y_axis_difference == 2
       knight_moves(move_1_oclock(current_step), target, path)
+    elsif x_axis_difference == 1 && y_axis_difference == -2
+      knight_moves(move_5_oclock(current_step), target, path)
+    elsif x_axis_difference == -1 && y_axis_difference == 2
+      knight_moves(move_11_oclock(current_step), target, path)
+    elsif x_axis_difference == -1 && y_axis_difference == -2
+      knight_moves(move_7_oclock(current_step), target, path)
     end
 
     if x_axis_difference > 0
