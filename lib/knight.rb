@@ -19,12 +19,12 @@ def knight_moves(current_step, target)
 
   until queue.empty?
     current_step, path = queue.shift
-    return "The shortest path to the target is #{path.length} long: #{path}" if current_step == target
+    return "The shortest path to the target position is #{path.length-1} steps away: #{path}" if current_step == target
     moves.each do |move|
       potential_move = [current_step[0] + move[0], current_step[1] + move[1]]
       if !visited[potential_move] && in_bounds?(potential_move)
         visited[potential_move] = true
-        queue << [potential_move, [path] << potential_move] 
+        queue << [potential_move, Array.new(path << potential_move)] 
       end
     end
   end
