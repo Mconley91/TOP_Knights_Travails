@@ -19,7 +19,6 @@ def knight_moves(current_step, target)
 
   until queue.empty?
     current_step, path = queue.shift
-
     moves.each do |move|
       return "You made it in #{path.length-1} moves!  Here's your path: #{path}" if current_step == target
       potential_move = [current_step[0] + move[0], current_step[1] + move[1]]
@@ -30,6 +29,7 @@ def knight_moves(current_step, target)
     end
   end
 end
+
 #---------------------------test area
 p knight_moves([0,0],[3,3])
 p knight_moves([0,0],[7,7])
